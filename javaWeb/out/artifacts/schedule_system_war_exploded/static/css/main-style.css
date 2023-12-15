@@ -1,0 +1,21 @@
+
+.ht{
+    text-align: center; 
+    color:gray;
+    font-family: 宋体;
+}
+.tab{
+    width: 500;
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin: 0px auto;
+}
+.buttonContainer{
+    text-align: center;
+}
+.btn1{
+    border: 2px solid powderblue;
+    border-radius: 4px;
+    width:60px;
+    background-color: rgb(243, 238, 231);
+}

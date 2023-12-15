@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日程管理系统用户注册</title>
+    
+    <link href="/static/css/main-style.css" rel="stylesheet" type="text/css"/>
+    <script src="/static/js/main-script.js" type="text/javascript"></script>
+    <script>
+        function checkUsername_(){
+            return checkUsername('usernameInput', 'usernameMsg')
+        }
+        function checkUserPwd_(){
+            var userPwdRepeatMsg = document.getElementById("userPwdRepeatMsg")
+            // 1 密码可用后才进行检测
+            if(!checkUserPwd('userPwdInput', 'userPwdMsg')) {
+                userPwdRepeatMsg.innerText = "密码由6位数字组成"
+                return false
+            }
+            // 2 获取第一、二次输入的密码
+            var userPwd = document.getElementById("userPwdInput").value
+            var userPwdRepeat = document.getElementById("userPwdRepeatInput").value
+            // 3 比较是否相等
+            if(userPwd != userPwdRepeat) {
+                userPwdRepeatMsg.innerText = "两次密码不一致"
+                return false
+            } else {
+                userPwdRepeatMsg.innerText = ""
+            }
+            // 验证通过
+            return true
+        }
+    </script>
+</head>
+<body>
+    <h1 class="ht">欢迎使用日程管理系统</h1>
+    <h3 class="ht">请注册</h3>
+    <form method="post" action="/user/regist">
+        <table class="tab">
+            <tr>
+                <td>请输入账号</td>
+                <td>
+                    <input id="usernameInput" type="text" name="username" onblur="checkUsername_()"/>
+                    <span id="usernameMsg"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>请输入密码</td>
+                <td>
+                    <input id="userPwdInput" type="password" name="userPwd" onblur="checkUserPwd_()"/>
+                    <span id="userPwdMsg"></span>
+                </td>
+            </tr> 
+            <tr>
+                <td>确认密码</td>
+                <td>
+                    <input id="userPwdRepeatInput" type="password" onblur="checkUserPwd_()" />
+                    <span id="userPwdRepeatMsg"></span>
+                </td>
+            </tr>  
+            <tr>
+                <td colspan="2" class="buttonContainer">
+                    <input type="submit" value="注册" class="btn1"/>
+                    <input type="reset" value="重置" class="btn1"/>
+                    <button class="btn1"><a href="./login.html">去登录</a></button>
+                </td>
+            </tr>          
+        </table>
+    </form>
+</body>
+</html>
